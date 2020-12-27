@@ -1,11 +1,17 @@
 package com.bam.testwhole;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 public class WelcomeActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +29,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         }).start();
+
     }
+
+
 }

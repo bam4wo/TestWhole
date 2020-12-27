@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
@@ -43,6 +44,7 @@ public class Login extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     String IMEINumber;
     TextView imei;
+    TextView device;
     private static final int REQUEST_CODE = 101;
 
     TextInputEditText textInputEditTextIDorEmail, textInputEditTextPassword;
@@ -71,6 +73,11 @@ public class Login extends AppCompatActivity {
 
         imei = findViewById(R.id.ed_imei);
         getImei();
+        String devices = Build.DEVICE;
+        device = findViewById(R.id.textView2);
+        device.setText(devices);
+
+
 
         //切換登入方式
         Switch sw = findViewById(R.id.sw);

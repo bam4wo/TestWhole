@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
@@ -125,6 +126,7 @@ public class SignUp extends AppCompatActivity {
                 password = String.valueOf(textInputEditTextPassword.getText());
                 password2 = String.valueOf(textInputEditTextPassword2.getText());
                 bindimei = IMEINumber;
+                String device = Build.DEVICE;
 
                 if (!employee_id.equals("") && !email.equals("") && !password.equals("") && !password2.equals("")) {
                     progressBar.setVisibility(View.VISIBLE);
@@ -176,12 +178,14 @@ public class SignUp extends AppCompatActivity {
                         handler2.post(new Runnable() {
                             @Override
                             public void run() {
-                                String[] field = new String[2];
+                                String[] field = new String[3];
                                 field[0] = "employee_id";
                                 field[1] = "imei";
-                                String[] data = new String[2];
+                                field[2] = "device";
+                                String[] data = new String[3];
                                 data[0] = employee_id;
                                 data[1] = bindimei;
+                                data[2] = device;
                                 PutData putData = new PutData("https://192.168.1.109/Hospital/Getimei.php", "POST", field, data); //網址要改成自己的php檔位置及自己的ip
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {
