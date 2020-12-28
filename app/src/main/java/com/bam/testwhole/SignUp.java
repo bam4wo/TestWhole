@@ -120,13 +120,13 @@ public class SignUp extends AppCompatActivity {
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String employee_id, email, password, password2, bindimei;
+                String employee_id, email, password, password2;
                 employee_id = String.valueOf(textInputEditTextEmployeeId.getText());
                 email = String.valueOf(textInputEditTextEmail.getText());
                 password = String.valueOf(textInputEditTextPassword.getText());
                 password2 = String.valueOf(textInputEditTextPassword2.getText());
-                bindimei = IMEINumber;
-                String device = Build.DEVICE;
+                //bindimei = IMEINumber;
+                String device = Build.DEVICE; //抓裝置
 
                 if (!employee_id.equals("") && !email.equals("") && !password.equals("") && !password2.equals("")) {
                     progressBar.setVisibility(View.VISIBLE);
@@ -172,8 +172,8 @@ public class SignUp extends AppCompatActivity {
                             }
                         }
                     });
-                    //imei傳入資料庫
-                    if(!bindimei.equals("")){
+                    //imei&裝置傳入資料庫
+                    if(!IMEINumber.equals("")){
                         Handler handler2 = new Handler();
                         handler2.post(new Runnable() {
                             @Override
@@ -184,7 +184,7 @@ public class SignUp extends AppCompatActivity {
                                 field[2] = "device";
                                 String[] data = new String[3];
                                 data[0] = employee_id;
-                                data[1] = bindimei;
+                                data[1] = IMEINumber;
                                 data[2] = device;
                                 PutData putData = new PutData("https://192.168.1.109/Hospital/Getimei.php", "POST", field, data); //網址要改成自己的php檔位置及自己的ip
                                 if (putData.startPut()) {
