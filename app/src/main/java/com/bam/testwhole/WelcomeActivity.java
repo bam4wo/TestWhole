@@ -73,21 +73,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-        /*
-        new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try{
-                    Thread.sleep(2000);
-                    startActivity(new Intent().setClass(WelcomeActivity.this,Login.class));
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-        }).start();*/
-
     }
 
     //取得imei
